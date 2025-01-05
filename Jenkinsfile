@@ -53,15 +53,46 @@ pipeline {
                 }
             }
         }
-        stage('deploy App'){
+
+        stage("provision ec2 instance") {
+            environment {
+                AWS_ACCESS_KEY_ID = credentials("aws_access_key_id")
+                AWS_SECRET_ACCESS_KEY = credentials("aws_secret_access_key")
+            }
             steps{
                 script{
+                    echo 'provision instance with terraform dynamically'
+                    dir('terraform'){
+                        sh 'terraform init'
+                        sh 'terraform apply --auto-approve'
+                        EC2_PUBLIC_IP = sh(
+                            script: "terraform output instance_id",
+                            returnStdout: true   
+                        ).trim()
+
+                    }
+                    
+                    
+                    
+                }
+            }
+        }
+        stage('deploy App'){
+            environment {
+                DOCKER_CREDENTIALS = credentials("dockerhub-credentials")
+            }
+            steps{
+                script{
+                    echo "waiting for ec2 instance to initialize......"
+                    sleep(time: 90, unit: "SECONDS")
+                    echo "${EC2_PUBLIC_IP}"
+
                     echo 'deploying application into AWS server.....'
-                    def dockerCmd = "bash ./my_script.sh ${IMAGE}"
-                    sshagent(['key']) {
-                        sh 'scp docker-compose.yaml ec2-user@3.120.132.115:/home/ec2-user'
-                        sh 'scp my_script.sh ec2-user@3.120.132.115:/home/ec2-user'
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.120.132.115 ${dockerCmd}"
+                    def dockerCmd = "bash ./my_script.sh ${IMAGE} ${DOCKER_CREDENTIALS_USR} ${DOCKER_CREDENTIALS_PWS}"
+                    sshagent(['sshkey']) {
+                        sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ec2-user@${EC2_PUBLIC_IP}:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no my_script.sh ec2-user@${EC2_PUBLIC_IP}:/home/ec2-user"
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@${EC2_PUBLIC_IP} ${dockerCmd}"
     
                     }
 
@@ -75,7 +106,7 @@ pipeline {
                     echo 'pushing updated app version into git repo.....'
                     withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USER', passwordVariable: 'PASS')]){
 
-                        sh "git remote set-url origin https://${USER}:${PASS}@github.com/bondgh0954/CI-CD_jenkins.git "
+                        sh "git remote set-url origin https://${USER}:${PASS}@github.com/bondgh0954/complete_CICD_terraform.git "
                         sh 'git config --global user.name "jenkins"'
                         sh 'git config --global user.email "jenkins@example.com"'
 
