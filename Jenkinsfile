@@ -80,6 +80,7 @@ pipeline {
         stage('deploy App'){
             environment {
                 DOCKER_CRED = credentials("dockerhub-credentials")
+                
             }
             steps{
                 script{
@@ -89,10 +90,11 @@ pipeline {
 
                     echo 'deploying application into AWS server.....'
                     def dockerCmd = "bash ./my_script.sh ${IMAGE} ${DOCKER_CRED_USR} ${DOCKER_CRED_PSW}"
+                    def instance = "ec2-user@${EC2_PUBLIC_IP}"
                     sshagent(['sshkey']) {
-                        sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ec2-user@${EC2_PUBLIC_IP}:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no my_script.sh ec2-user@${EC2_PUBLIC_IP}:/home/ec2-user"
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@${EC2_PUBLIC_IP} ${dockerCmd}"
+                        sh "scp -o StrictHostKeyChecking=no my_script.sh ${instance}:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ${instance}:/home/ec2-user"
+                        sh "ssh -o StrictHostKeyChecking=no ${instance} ${dockerCmd}"
     
                     }
 
