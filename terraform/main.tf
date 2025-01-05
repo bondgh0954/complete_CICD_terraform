@@ -1,4 +1,6 @@
-provider "aws"{}
+provider "aws"{
+    region = "eu-central-1"
+}
 
 resource "aws_vpc" "my_vpc" {
     cidr_block = var.vpc_cidr
