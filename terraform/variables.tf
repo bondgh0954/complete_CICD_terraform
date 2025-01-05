@@ -5,7 +5,7 @@ variable "env" {
     default = "dev"
 }
 variable "subnet_cidr" {
-    default = "10.0.0.2/24"
+    default = "10.0.2.0/24"
 }
 variable "avail" {
     default = "eu-central-1b"
