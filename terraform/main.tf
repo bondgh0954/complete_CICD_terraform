@@ -87,6 +87,7 @@ resource "aws_instance" "my_instance" {
     availability_zone = var.avail
     associate_public_ip_address = true
     key_name = "testkey"
+    instance_type = "t2.micro"
 
     tags = {
         Name: "${var.env} -instance"
