@@ -79,7 +79,7 @@ data "aws_ami" "instance_ami" {
 
     filter {
         name = "name"
-        values = ["Amazon Linux 2023 AMI"]
+        values = ["amzn2-ami-kernel-*-x86_64-gp2"]
     }
 }
 resource "aws_instance" "my_instance" {
