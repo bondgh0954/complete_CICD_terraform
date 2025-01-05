@@ -13,7 +13,9 @@ resource "aws_subnet" "my_subnet" {
     cidr_block = var.subnet_cidr
     availability_zone = var.avail
 
-    tags = "${var.env} -subnet"
+    tags = {
+        Name: "${var.env} -subnet1"
+    }
 }
 
 resource "aws_internet_gateway" "my_igw" {
