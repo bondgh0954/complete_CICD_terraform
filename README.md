@@ -51,23 +51,20 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 ### Step 1: Configure Jenkins
 1. Install necessary Jenkins plugins:
    - Git
-   - Docker Pipeline
+   - Docker 
    - Terraform
 2. Create a new Jenkins pipeline.
 3. Use the pipeline script provided in the `Jenkinsfile` from this repository.
 
-### Step 2: Set Up DockerHub
-1. Create a DockerHub account if you don’t have one.
-2. Generate an access token in DockerHub.
-3. Configure Jenkins with the DockerHub credentials.
 
 ### Step 3: Prepare AWS and Terraform
 1. Install the AWS CLI and configure it with your AWS credentials.
    ```bash
    aws configure
    ```
-2. Write Terraform configuration files to define the EC2 instance:
-   - Instance type, AMI, and security groups.
+2. Write Terraform configuration files to create the EC2 instance:
+   - Create all infrastructure from scratch.
+   - Create VPC, Subnet, internet gateway, route table , security group and ec2 instance
 3. Store the Terraform files in the `terraform/` directory.
 
 ### Step 4: Configure Git Repository
@@ -126,31 +123,5 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 ### 7. Commit Changes to Git
 - Any changes, such as the updated `pom.xml` file, are committed back to the repository.
 
-## Example Commands
 
-### Build Application Locally
-```bash
-mvn clean package
-```
 
-### Run Docker Container Locally
-```bash
-docker build -t my-app .
-docker run -p 8080:8080 my-app
-```
-
-### Apply Terraform Configuration
-```bash
-cd terraform
-terraform init
-terraform apply
-```
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Contributing
-Contributions are welcome! Feel free to submit issues or pull requests.
-
-## Contact
-For any inquiries, reach out via [your_email@example.com].
