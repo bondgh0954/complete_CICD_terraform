@@ -1,7 +1,7 @@
 # CI/CD Pipeline Project with Jenkins
 
 ## Project Overview
-This project demonstrates a complete CI/CD (Continuous Integration and Continuous Deployment) pipeline using Jenkins. It integrates various tools and processes to automate the application lifecycle, from versioning and building to deployment on a dynamically provisioned EC2 instance.
+This project demonstrates a complete CI/CD (Continuous Integration and Continuous Deployment) pipeline using Jenkins. It integrates various tools and processes to automate the application lifecycle, from versioning and building to deployment on a dynamically provisioned EC2 instance using docker-compose
 
 ## Features
 - **Dynamic Application Versioning**: Automatically increment the application version.
@@ -50,11 +50,15 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 
 ### Step 1: Configure Jenkins
 1. Install necessary Jenkins plugins:
-   - Git
    - Docker 
    - Terraform
-2. Create a new Jenkins pipeline.
-3. Use the pipeline script provided in the `Jenkinsfile` from this repository.
+2. Create a new Jenkins mutibranch pipeline job.
+3. Credentials in Jenkins:
+   - Create credentials in jenkins with aws credentials
+   - Create credentials with the .pem key associated with the ec2 instance
+   - create credentials for git registry
+   - create credentials for dockerhub registry
+   - 
 
 
 ### Step 3: Prepare AWS and Terraform
@@ -84,7 +88,7 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 ```
 ├── Jenkinsfile                  # CI/CD pipeline definition
 ├── src/                         # Java Maven application source code
-├── Dockerfile                   # Docker image definition
+├── Dockerfile                   # build docker image from the application
 ├── docker-compose.yml           # Docker Compose file for deployment
 ├── terraform/                   # Terraform configuration files
 ├── README.md                    # Project documentation
