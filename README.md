@@ -29,15 +29,6 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 7. **Commit Changes to Git**
    - Commit any configuration or versioning updates back to the Git repository.
 
-## Prerequisites
-- Jenkins installed and configured.
-- A Java Maven application.
-- Docker and DockerHub account.
-- Terraform installed.
-- AWS credentials for provisioning EC2 instances.
-- Git installed and configured.
-
-
 
 ## Setup Instructions
 
