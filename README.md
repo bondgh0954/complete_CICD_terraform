@@ -3,14 +3,14 @@
 ## Project Overview
 This project demonstrates a complete CI/CD (Continuous Integration and Continuous Deployment) pipeline using Jenkins. It integrates various tools and processes to automate the application lifecycle, from versioning and building to deployment on a dynamically provisioned EC2 instance using docker-compose
 
-## Features
-- **Dynamic Application Versioning**: Automatically increment the application version.
-- **Build and Package**: Compile and package the Java Maven application into a JAR file.
-- **Docker Image Creation**: Build a Docker image for the application.
-- **DockerHub Integration**: Push the Docker image to DockerHub.
-- **Dynamic Infrastructure Provisioning**: Use Terraform to provision an EC2 instance dynamically.
-- **Application Deployment**: Deploy the application on the EC2 instance using Docker Compose.
-- **Git Integration**: Commit changes back to the Git repository.
+## Tools and Technologies
+- **Jenkins**: Orchestrates the CI/CD pipeline.
+- **Java (Maven)**: Used to build the application.
+- **Docker**: Builds and runs containerized applications.
+- **DockerHub**: Stores Docker images.
+- **Terraform**: Manages infrastructure as code.
+- **AWS EC2**: Hosts the deployed application.
+- **Git**: Manages version control.
 
 ## Pipeline Stages
 1. **Increment Application Version**
@@ -37,14 +37,7 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 - AWS credentials for provisioning EC2 instances.
 - Git installed and configured.
 
-## Tools and Technologies
-- **Jenkins**: Orchestrates the CI/CD pipeline.
-- **Java (Maven)**: Used to build the application.
-- **Docker**: Builds and runs containerized applications.
-- **DockerHub**: Stores Docker images.
-- **Terraform**: Manages infrastructure as code.
-- **AWS EC2**: Hosts the deployed application.
-- **Git**: Manages version control.
+
 
 ## Setup Instructions
 
