@@ -53,6 +53,10 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 - The tagged Docker image is pushed to the DockerHub repository.
 
 ### 5. Provision EC2 Instance with Terraform
+ For terraform to have authentication access to provision in aws, create environment variables with aws credentials
+   ```bash
+  
+   ```
 - Jenkins runs Terraform commands to provision an EC2 instance:
    ```bash
    terraform init
