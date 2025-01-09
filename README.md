@@ -38,7 +38,7 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 
 ### 1. Increment Application Version
 - A script in the pipeline updates the `pom.xml` file to increment the application version.
-- The updated `pom.xml` is committed back to the Git repository.
+- The updated `pom.xml` version and the jenkins build number set as the docker image version
 
 ### 2. Build JAR File
 - The `mvn clean package` command compiles the source code and creates a JAR file.
@@ -58,7 +58,7 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
    terraform init
    terraform apply -auto-approve
    ```
-- The instance ID and public IP are captured for deployment.
+- The public IP is output which is set dynamically for deployment.
 
 ### 6. Deploy Application on EC2 Instance
 - The Docker Compose file is used to deploy the Docker container on the EC2 instance.
