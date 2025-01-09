@@ -21,24 +21,24 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 2. Create a new Jenkins mutibranch pipeline job.
 3. Credentials in Jenkins:
    - Create credentials in jenkins with aws credentials
-   - Create credentials with the .pem key associated with the ec2 instance
+   - Create credentials with the key pair associated with the ec2 instance
    - create credentials for git registry
    - create credentials for dockerhub registry
    - 
 
 
-### Step 3:Create Terraform configuration files
+### Step 2:Create Terraform configuration files
 
 1. Write Terraform configuration files to create the EC2 instance:
    - Create all infrastructure from scratch.
    - Create VPC, Subnet, internet gateway, route table , security group and ec2 instance
 3. Store the Terraform files in the `terraform/` directory.
 
-### Step 4: Configure Git Repository
+### Step 3: Configure Git Repository
 1. Push the application code and `Jenkinsfile` to your Git repository.
 2. Set up a webhook to trigger the Jenkins pipeline on code changes (optional).
 
-### Step 5: Run the Pipeline
+### Step 4: Run the Pipeline
 1. Trigger the Jenkins pipeline manually or through a webhook.
 2. Monitor the execution of each stage:
    - Version increment.
