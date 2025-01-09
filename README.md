@@ -55,7 +55,8 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 ### 5. Provision EC2 Instance with Terraform
  For terraform to have authentication access to provision in aws, create environment variables with aws credentials
    ```bash
-  
+    AWS_ACCESS_KEY_ID = credentials("aws_secret_key")
+    AWS_SECRET_ACCESS_KEY = credentials("aws_secret_access_key")
    ```
 - Jenkins runs Terraform commands to provision an EC2 instance:
    ```bash
