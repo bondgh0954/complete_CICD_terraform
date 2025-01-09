@@ -12,24 +12,6 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 - **AWS EC2**: Hosts the deployed application.
 - **Git**: Manages version control.
 
-## Pipeline Stages
-1. **Increment Application Version**
-   - Automatically update the application's version based on the current build.
-2. **Build JAR File**
-   - Compile the Java Maven application into a deployable JAR file.
-3. **Build Docker Image**
-   - Use the JAR file to create a Docker image of the application.
-4. **Push Docker Image to DockerHub**
-   - Authenticate with DockerHub and push the Docker image.
-5. **Provision EC2 Instance with Terraform**
-   - Dynamically create an EC2 instance using Terraform configuration files.
-   - Retrieve the EC2 instance ID for deployment.
-6. **Deploy Application on EC2 Instance**
-   - Use Docker Compose to deploy the application on the provisioned EC2 instance.
-7. **Commit Changes to Git**
-   - Commit any configuration or versioning updates back to the Git repository.
-
-
 ## Setup Instructions
 
 ### Step 1: Configure Jenkins
@@ -45,12 +27,9 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
    - 
 
 
-### Step 3: Prepare AWS and Terraform
-1. Install the AWS CLI and configure it with your AWS credentials.
-   ```bash
-   aws configure
-   ```
-2. Write Terraform configuration files to create the EC2 instance:
+### Step 3:Create Terraform configuration files
+
+1. Write Terraform configuration files to create the EC2 instance:
    - Create all infrastructure from scratch.
    - Create VPC, Subnet, internet gateway, route table , security group and ec2 instance
 3. Store the Terraform files in the `terraform/` directory.
