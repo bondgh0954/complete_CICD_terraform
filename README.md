@@ -24,7 +24,7 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
    - Create credentials with the key pair associated with the ec2 instance
    - create credentials for git registry
    - create credentials for dockerhub registry
-   - 
+     
 
 
 ### Step 2:Create Terraform configuration files
@@ -34,11 +34,7 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
    - Create VPC, Subnet, internet gateway, route table , security group and ec2 instance
 3. Store the Terraform files in the `terraform/` directory.
 
-### Step 3: Configure Git Repository
-1. Push the application code and `Jenkinsfile` to your Git repository.
-2. Set up a webhook to trigger the Jenkins pipeline on code changes (optional).
-
-### Step 4: Run the Pipeline
+### Step 3: Run the Pipeline
 1. Trigger the Jenkins pipeline manually or through a webhook.
 2. Monitor the execution of each stage:
    - Version increment.
