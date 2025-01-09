@@ -59,6 +59,13 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
    terraform apply -auto-approve
    ```
 - The public IP is output which is set dynamically for deployment.
+    ```bash
+    EC2_PUBLIC_IP = sh(
+        script: "terraform output instance_id",
+        returnStdout: true   
+     ).trim()
+    ```
+
 
 ### 6. Deploy Application on EC2 Instance
 - The Docker Compose file is used to deploy the Docker container on the EC2 instance.
