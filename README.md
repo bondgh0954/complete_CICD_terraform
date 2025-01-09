@@ -27,33 +27,14 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
      
 
 
-### Step 2:Create Terraform configuration files
+### Step 2:Create Terraform configuration to provision ec2 instance
 
-1. Write Terraform configuration files to create the EC2 instance:
+1. Write Terraform configuration files to create the EC2 instance and store files in the `terraform/` directory.:
    - Create all infrastructure from scratch.
    - Create VPC, Subnet, internet gateway, route table , security group and ec2 instance
-3. Store the Terraform files in the `terraform/` directory.
+   - user data script(script.sh) to install docker and install docker compose on the ec2 instance after provisioning
 
-### Step 3: Run the Pipeline
-1. Trigger the Jenkins pipeline manually or through a webhook.
-2. Monitor the execution of each stage:
-   - Version increment.
-   - Application build.
-   - Docker image creation and push.
-   - EC2 provisioning and deployment.
-3. Verify the application is running on the provisioned EC2 instance.
-
-## Repository Structure
-```
-├── Jenkinsfile                  # CI/CD pipeline definition
-├── src/                         # Java Maven application source code
-├── Dockerfile                   # build docker image from the application
-├── docker-compose.yml           # Docker Compose file for deployment
-├── terraform/                   # Terraform configuration files
-├── README.md                    # Project documentation
-```
-
-## Detailed Steps
+### Step 3:Adjust jenkinsfile pipeline 
 
 ### 1. Increment Application Version
 - A script in the pipeline updates the `pom.xml` file to increment the application version.
@@ -85,6 +66,18 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 
 ### 7. Commit Changes to Git
 - Any changes, such as the updated `pom.xml` file, are committed back to the repository.
+
+## Repository Structure
+```
+├── Jenkinsfile                  # CI/CD pipeline definition
+├── src/                         # Java Maven application source code
+├── Dockerfile                   # build docker image from the application
+├── docker-compose.yml           # Docker Compose file for deployment
+├── terraform/                   # Terraform configuration files
+├── README.md                    # Project documentation
+```
+
+
 
 
 
