@@ -75,9 +75,10 @@ This project demonstrates a complete CI/CD (Continuous Integration and Continuou
 ### 6. Deploy Application on EC2 Instance
 - After provisioning the instance need to fully initialize before deployment therefore its need some wait time
    ```bash
-   
+      sleep(time: 90, unit: "SECONDS")
    ```
-- The Docker Compose file is used to deploy the Docker container on the EC2 instance.
+- copy the docker compose file to the ec2 instance.
+- copy the script for starting the application to the instance.
 - SSH is used to connect to the EC2 instance and execute Docker Compose commands.
 
 ### 7. Commit Changes to Git
